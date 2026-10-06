@@ -10,13 +10,13 @@ const bannersByRow: Record<number, Parameters<typeof PromoBanner>[0]> = {
     href: 'https://assets.sharepal.in/',
     desktopImage: `${BANNER_BASE}/assets-fund-banner.png`,
     mobileImage: `${BANNER_BASE}/asset-partner-mobile.png`,
-    className: 'md:my-5',
+    className: 'mb-4 md:mb-9 md:mt-5',
   },
   2: {
     href: 'https://earnwithus.sharepal.in/',
     desktopImage: `${BANNER_BASE}/ews-generic-banner-desktop.png`,
     mobileImage: `${BANNER_BASE}/ews-generic-banner-mobile.png`,
-    className: 'py-2 md:py-4 lg:py-6',
+    className: 'mb-4 py-2 md:py-4 lg:py-6',
   },
 }
 
