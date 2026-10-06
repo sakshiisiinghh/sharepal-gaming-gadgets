@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import chatbot from '../assets/chatbot.svg'
+import { useLottie } from 'lottie-react'
+import chatbotAnimation from '../assets/chatbot-animation.json'
 import { CalendarPlusIcon } from './icons'
 
 const SHOW_AFTER_SCROLL = 300
 
 export default function FloatingActions({ onSelectDates }: { onSelectDates: () => void }) {
   const [isScrolled, setScrolled] = useState(false)
+  const { View: chatbotAnimationView } = useLottie({ animationData: chatbotAnimation, loop: true })
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > SHOW_AFTER_SCROLL)
@@ -26,7 +28,7 @@ export default function FloatingActions({ onSelectDates }: { onSelectDates: () =
         </button>
       )}
       <a href="/chatbot" title="Open chatbot" className="fixed bottom-16 right-2 z-40 md:bottom-10 md:right-6">
-        <img src={chatbot} alt="" className="w-20 lg:w-28" />
+        <div className="w-20 lg:w-28">{chatbotAnimationView}</div>
       </a>
     </>
   )
