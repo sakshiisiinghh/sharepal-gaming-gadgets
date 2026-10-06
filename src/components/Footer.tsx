@@ -18,7 +18,7 @@ function SeoSection() {
   return (
     <div className="flex flex-col gap-2">
       <div
-        className={`text-neutral-300 [&_a]:underline [&_h2]:my-1 [&_h2]:text-18 [&_h2]:font-medium [&_h2]:leading-7 [&_h2]:text-gray-100 [&_h3]:my-2 [&_h3]:text-16 [&_h3]:font-medium [&_li]:mt-1 [&_li]:text-14 [&_li]:font-light [&_p]:mt-1 [&_p]:text-14 [&_p]:font-light [&_strong]:font-bold [&_strong]:text-gray-150 [&_ul]:list-inside [&_ul]:list-disc ${
+        className={`text-neutral-300 [&_a]:underline [&_h2]:my-1 [&_h2]:text-18 [&_h2]:font-medium [&_h2]:leading-7 [&_h2]:text-gray-100 [&_h3]:my-2 [&_h3]:text-16 [&_h3]:font-medium [&_li]:mt-1 [&_li]:text-14 [&_li]:leading-5 [&_p]:mt-1 [&_p]:text-14 [&_p]:leading-5 [&_strong]:text-14 [&_strong]:font-bold [&_strong]:leading-[18px] [&_strong]:text-gray-150 ${
           isExpanded ? '' : 'max-h-[260px] overflow-hidden'
         }`}
       >
@@ -63,7 +63,7 @@ export default function Footer() {
                 <h2 className="mb-3 min-w-max text-14 font-bold text-gray-100 md:mb-6">{title}</h2>
                 <div className="flex min-w-max flex-col gap-1 text-12 font-medium text-neutral-300">
                   {links.map(({ label, href }) => (
-                    <a key={label} href={href} className="py-0 hover:text-white md:py-3 md:text-14">
+                    <a key={label} href={href} className="py-1.5 hover:text-white md:py-3 md:text-14">
                       {label}
                       {newBadgeLinks.includes(label) && <NewBadge />}
                     </a>
@@ -74,26 +74,26 @@ export default function Footer() {
             <div>
               <h2 className="mb-3 min-w-max text-14 font-bold text-gray-100 md:mb-6">Need Help</h2>
               <div className="flex min-w-max flex-col gap-2 text-neutral-300">
-                <button type="button" className="flex items-center gap-2 py-1.5 hover:text-white md:py-3">
-                  <HeadsetIcon className="h-6 w-6" />
+                <button type="button" className="flex items-center gap-2 py-1.5 font-medium hover:text-white md:py-3">
+                  <HeadsetIcon className="h-4 w-4" />
                   <span className="text-12 md:text-14">Contact Support</span>
                 </button>
-                <a href="/support" className="py-1.5 text-12 hover:text-white md:py-3 md:text-14">
+                <a href="/support" className="py-1.5 text-12 font-medium hover:text-white md:py-3 md:text-14">
                   Contact Us
                 </a>
-                <a href="mailto:care@sharepal.in" className="flex items-center gap-2 py-1.5 hover:text-white md:py-3">
+                <a href="mailto:care@sharepal.in" className="flex items-center gap-2 py-1.5 font-medium hover:text-white md:py-3">
                   <MailIcon className="h-6 w-6" />
                   <span className="text-12 md:text-14">care@sharepal.in</span>
                 </a>
                 <div className="flex items-center gap-3 py-1.5 md:py-3">
-                  <a href={socialLinks.facebook} aria-label="Facebook"><FacebookIcon className="h-8 w-8" /></a>
-                  <a href={socialLinks.instagram} aria-label="Instagram"><InstagramIcon className="h-8 w-8" /></a>
-                  <a href={socialLinks.linkedin} aria-label="LinkedIn"><LinkedinIcon className="h-8 w-8" /></a>
+                  <a href={socialLinks.facebook} aria-label="Facebook"><FacebookIcon className="h-8 w-[33px]" /></a>
+                  <a href={socialLinks.instagram} aria-label="Instagram"><InstagramIcon className="h-8 w-[33px]" /></a>
+                  <a href={socialLinks.linkedin} aria-label="LinkedIn"><LinkedinIcon className="h-8 w-[33px]" /></a>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-4 border-t border-primary-700 py-6 text-14 font-medium text-primary-300 max-md:flex-col">
+          <div className="flex items-center justify-between gap-4 border-t border-primary-700 py-6 text-14 font-medium leading-5 text-primary-300 max-md:flex-col">
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

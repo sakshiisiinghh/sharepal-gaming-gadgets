@@ -36,7 +36,7 @@ export default function GamingGadgets() {
         onOpenSearch={() => setOverlay('search')}
         onOpenProfile={() => setOverlay('profile')}
       />
-      <main className="container px-0 py-24 pb-0 md:py-20 md:pb-0">
+      <main className="container px-0 py-24 md:py-20">
         <div className="max-md:bg-[linear-gradient(360deg,#8A2BE2_0%,#4C187C_100%)] max-md:pb-3 md:contents">
           <SuperCategoryTabs />
           <div className="px-2 md:hidden">

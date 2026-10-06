@@ -28,15 +28,17 @@ export default function Hero() {
         <h1 className="font-ubuntu text-20 font-bold capitalize leading-tight tracking-tight drop-shadow-lg md:text-40 md:-tracking-[0.01em]">
           Gaming Consoles
         </h1>
-        <h2 className="w-[75%] text-10 font-bold drop-shadow-md max-md:text-start sm:text-14 md:max-w-[70%] lg:max-w-[510px] lg:text-18 lg:leading-6">
-          Rent the latest gaming gadgets from
-          <span className="mx-1 inline-flex w-14 items-center justify-center align-middle md:w-20">
-            <img src={logoShare} alt="" className="w-[63%]" />
-            <img src={logoPal} alt="SharePal" className="w-[37%]" />
-          </span>
-          PS5, Xbox, Oculus VR, Racing Wheel on rent.
-        </h2>
-        <div className="flex w-full flex-wrap items-center md:mt-3 md:justify-center md:max-w-lg md:gap-2">
+        <div className="flex flex-col items-start md:items-center md:gap-1">
+          <h2 className="w-[75%] text-10 font-bold drop-shadow-md max-md:text-start sm:text-14 md:max-w-[70%] lg:text-18 lg:leading-6">
+            Rent the latest gaming gadgets from
+            <span className="mx-1 inline-flex w-14 items-center justify-center align-middle md:w-20">
+              <img src={logoShare} alt="" className="h-[27px] w-[63%] object-contain" />
+              <img src={logoPal} alt="SharePal" className="h-[27px] w-[37%] object-contain" />
+            </span>
+            PS5, Xbox, Oculus VR, Racing Wheel on rent.
+          </h2>
+        </div>
+        <div className="flex w-full flex-wrap items-center md:mt-3 md:justify-center">
           {brandLogos.map(({ file, name }, index) => (
             <div key={file} className="flex items-center">
               {index > 0 && <span className="mx-1 h-4 w-[2px] rounded-full bg-category-purple opacity-50 md:mx-2 md:h-6 md:w-[3px] md:opacity-70" />}

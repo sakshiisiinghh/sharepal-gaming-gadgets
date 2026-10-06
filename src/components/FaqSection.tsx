@@ -12,7 +12,7 @@ export default function FaqSection({ onViewMore }: { onViewMore: () => void }) {
         <button
           type="button"
           onClick={onViewMore}
-          className="h-11 w-full rounded-xl bg-neutral-150 px-6 py-3 text-14 font-semibold text-primary-900 hover:bg-neutral-200 md:text-16"
+          className="h-11 w-full rounded-xl bg-neutral-150 px-6 py-3 text-14 font-semibold leading-5 text-primary-900 hover:bg-neutral-200 md:text-16 md:leading-6"
         >
           View more FAQ&apos;s
         </button>

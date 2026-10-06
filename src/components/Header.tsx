@@ -62,7 +62,7 @@ function DesktopHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenSea
           className="flex h-full items-center gap-1 rounded-full bg-primary-900 px-3 py-2 text-14 text-white"
         >
           <CalendarPlusIcon className="h-4 w-4" />
-          <span className="pr-1 font-semibold tracking-wide">Select</span>
+          <span className="pr-1 font-semibold leading-5 tracking-wide">Select</span>
         </button>
       </div>
       <div className="flex items-end justify-end gap-3 text-gray-100">

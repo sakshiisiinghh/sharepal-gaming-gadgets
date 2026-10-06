@@ -27,7 +27,7 @@ export default function FaqAccordion({ faqs, variant = 'section' }: FaqAccordion
                 type="button"
                 aria-expanded={isOpen}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex flex-1 items-center justify-between gap-4 px-4 py-4 text-left text-14 font-medium md:text-16 md:font-semibold"
+                className="flex flex-1 items-center justify-between gap-4 px-4 py-4 text-left text-14 font-medium leading-5 md:text-16 md:font-semibold md:leading-6"
               >
                 {question}
                 <ChevronDownIcon className={`h-4 w-4 shrink-0 text-neutral-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />

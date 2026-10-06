@@ -13,18 +13,18 @@ export default function SuperCategoryTabs() {
 
   useEffect(() => {
     const activeTab = scrollerRef.current?.querySelector<HTMLElement>('[data-active]')
-    if (activeTab) scrollerRef.current?.scrollTo({ left: activeTab.offsetLeft - 8 })
+    if (activeTab) scrollerRef.current?.scrollTo({ left: activeTab.offsetLeft })
   }, [])
 
   const scrollTabs = (direction: -1 | 1) => scrollerRef.current?.scrollBy({ left: direction * SCROLL_STEP, behavior: 'smooth' })
 
   return (
-    <nav className="sticky top-0 z-20 bg-transparent py-1 md:top-[84px] md:bg-neutral-150">
+    <nav className="sticky top-0 z-20 bg-transparent py-1 md:top-[80px] md:bg-neutral-150">
       <div className="relative mx-auto max-w-3xl px-8">
         <button type="button" aria-label="Scroll tabs left" onClick={() => scrollTabs(-1)} className={`${arrowButton} left-1`}>
           <ChevronLeftIcon className="h-5 w-5" />
         </button>
-        <ul ref={scrollerRef} className="scrollbar-none relative flex overflow-x-auto lg:overflow-visible">
+        <ul ref={scrollerRef} className="scrollbar-none relative flex overflow-x-auto gap-[10px] lg:-ml-[30px] lg:overflow-visible">
           {superCategories.map(({ label, href }) => {
             const isActive = label === ACTIVE_TAB
             const hasMenu = label === 'Entertainment'
@@ -32,7 +32,7 @@ export default function SuperCategoryTabs() {
               <li
                 key={label}
                 data-active={isActive || undefined}
-                className="relative shrink-0 basis-[40%] px-2 py-2 text-center sm:basis-1/2 md:basis-1/3 md:px-4 lg:basis-1/4"
+                className="relative shrink-0 basis-[40%] px-2 py-2 text-center sm:basis-1/2 md:basis-1/3 md:px-4 lg:basis-[176px]"
                 onMouseEnter={() => hasMenu && setEntertainmentMenuOpen(true)}
                 onMouseLeave={() => hasMenu && setEntertainmentMenuOpen(false)}
               >

@@ -14,7 +14,7 @@ function initials(name: string) {
 
 function ReviewCard({ text, name, city, category }: Review) {
   return (
-    <div className="flex min-w-[328px] max-w-[328px] flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-neutral-100 p-3 shadow md:rounded-3xl lg:min-w-[360px] lg:max-w-[360px] lg:px-0 lg:p-4">
+    <div className="flex min-w-[328px] max-w-[328px] flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-neutral-100 p-3 md:rounded-3xl lg:min-w-[360px] lg:max-w-[360px] lg:px-0 lg:p-4">
       <div className="flex flex-col gap-2 md:px-4">
         <div className="flex gap-2">
           <img src={googleLogo} alt="Google" className="h-6 w-6" />
@@ -24,7 +24,7 @@ function ReviewCard({ text, name, city, category }: Review) {
             ))}
           </div>
         </div>
-        <p className="line-clamp-4 text-14 font-bold text-primary-900 lg:text-16">“ {text} ”</p>
+        <p className="mt-1.5 line-clamp-4 text-14 font-bold text-primary-900 lg:text-16">“ {text} ”</p>
       </div>
       <div className="flex gap-5 md:px-4">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-150 text-12 font-semibold text-primary-600 md:text-16">
@@ -44,18 +44,20 @@ function ReviewCard({ text, name, city, category }: Review) {
 export default function ReviewsSection() {
   return (
     <section className="flex flex-col gap-5 bg-gray-100 py-4 lg:gap-12 lg:py-12">
-      <h2 className="px-4 text-center font-ubuntu text-24 font-bold -tracking-[0.02em] md:text-48">
+      <h2 className="px-4 text-center font-ubuntu text-24 font-bold leading-7 -tracking-[0.02em] md:text-48 md:leading-[56px]">
         Served more than <span className="text-decorative-orange">1 Lakh Orders</span>
       </h2>
-      <div className="group overflow-hidden p-2 py-3">
-        <div className="flex w-max animate-marquee gap-4 px-4 group-hover:[animation-play-state:paused]">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 gap-4" aria-hidden={copy === 1}>
-              {reviews.map((review) => (
-                <ReviewCard key={review.name} {...review} />
-              ))}
-            </div>
-          ))}
+      <div className="overflow-hidden py-3">
+        <div className="group p-2">
+          <div className="flex w-max animate-marquee gap-4 px-4 group-hover:[animation-play-state:paused]">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex shrink-0 gap-4" aria-hidden={copy === 1}>
+                {reviews.map((review) => (
+                  <ReviewCard key={review.name} {...review} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <dl className="container grid grid-cols-3 gap-3 border-y-2 border-neutral-150 px-0 py-4 md:gap-6 md:py-6">

@@ -26,7 +26,7 @@ export default function ProductCard({ product, hasDates, onSelectDates }: Produc
         </div>
         {tag && (
           <span
-            className={`absolute left-2 top-2 rounded-lg border px-1.5 text-10 font-semibold md:left-3 md:top-3 md:border-2 md:px-2.5 md:py-0.5 md:text-12 ${tagStyles[tag] ?? defaultTagStyle}`}
+            className={`absolute left-2 top-2 rounded-lg border px-1.5 text-10 font-semibold leading-5 md:leading-4 md:left-3 md:top-3 md:border-2 md:px-2.5 md:py-0.5 md:text-12 ${tagStyles[tag] ?? defaultTagStyle}`}
           >
             {tag}
           </span>

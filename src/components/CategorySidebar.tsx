@@ -24,7 +24,7 @@ export default function CategorySidebar() {
                     />
                   </span>
                   <span
-                    className={`line-clamp-2 max-w-[50px] text-center text-10 font-semibold leading-tight md:max-w-[60px] md:text-12 md:font-bold lg:max-w-[80px] lg:text-14 ${
+                    className={`line-clamp-2 max-w-[50px] text-center text-10 font-semibold leading-tight md:max-w-[60px] md:text-12 md:font-bold lg:max-w-[80px] lg:text-14 lg:font-semibold ${
                       isSelected ? 'text-primary-500' : 'text-neutral-900'
                     }`}
                   >
