@@ -16,6 +16,7 @@ import ProfileDrawer from '../components/overlays/ProfileDrawer'
 import SearchDrawer from '../components/overlays/SearchDrawer'
 import SuperCategoryTabs from '../components/SuperCategoryTabs'
 import { CITY } from '../data/site'
+import { defaultFilters, PAGE_SIZE, type ProductFilters } from '../utils/productFilters'
 
 type Overlay = 'city' | 'dates' | 'search' | 'profile' | 'faqs' | null
 
@@ -23,8 +24,15 @@ export default function GamingGadgets() {
   const [overlay, setOverlay] = useState<Overlay>(null)
   const [city, setCity] = useState(CITY)
   const [dateRange, setDateRange] = useState<DateRange | null>(null)
+  const [filters, setFilters] = useState(defaultFilters)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const openDates = () => setOverlay('dates')
   const closeOverlay = () => setOverlay(null)
+
+  const changeFilters = (nextFilters: ProductFilters) => {
+    setFilters(nextFilters)
+    setVisibleCount(PAGE_SIZE)
+  }
 
   return (
     <>
@@ -44,12 +52,19 @@ export default function GamingGadgets() {
           </div>
         </div>
         <div className="flex gap-2 px-2 max-md:pt-4 md:grid md:grid-cols-[100px_1fr] md:gap-8 md:px-0 lg:grid-cols-[120px_1fr]">
-          <CategorySidebar />
+          <CategorySidebar selectedCategory={filters.category} onSelectCategory={(category) => changeFilters({ ...filters, category })} />
           <div className="min-w-0 flex-1">
             <div className="hidden md:block">
               <Hero />
             </div>
-            <ProductSection dateRange={dateRange} onSelectDates={openDates} />
+            <ProductSection
+              filters={filters}
+              visibleCount={visibleCount}
+              dateRange={dateRange}
+              onFiltersChange={changeFilters}
+              onShowMore={() => setVisibleCount(visibleCount + PAGE_SIZE)}
+              onSelectDates={openDates}
+            />
           </div>
         </div>
       </main>

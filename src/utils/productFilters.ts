@@ -10,13 +10,30 @@ export const sortOptions: { key: SortKey; label: string }[] = [
   { key: 'popularity', label: 'Most Booked' },
 ]
 
+export const PAGE_SIZE = 12
+
 export interface ProductFilters {
   sortKey: SortKey
   inStockOnly: boolean
   tag: string | null
+  category: string | null
 }
 
-export const defaultFilters: ProductFilters = { sortKey: 'relevance', inStockOnly: false, tag: null }
+export const defaultFilters: ProductFilters = { sortKey: 'relevance', inStockOnly: false, tag: null, category: null }
+
+// The data has no category field, so products are matched to sidebar categories by name. First match wins.
+const categoryRules: { category: string; pattern: RegExp }[] = [
+  { category: 'Racing Wheel', pattern: /racing wheel/i },
+  { category: 'GTA VI', pattern: /gta/i },
+  { category: 'Xbox Console', pattern: /xbox/i },
+  { category: 'VR', pattern: /\bvr\b|oculus|quest/i },
+  { category: 'Big Screen Gaming', pattern: /projector|big screen/i },
+  { category: 'PS5 Console', pattern: /ps5|playstation|controller/i },
+]
+
+function getCategory({ name }: Product) {
+  return categoryRules.find(({ pattern }) => pattern.test(name))?.category
+}
 
 const comparators: Record<SortKey, ((a: Product, b: Product) => number) | null> = {
   relevance: null,
@@ -26,9 +43,10 @@ const comparators: Record<SortKey, ((a: Product, b: Product) => number) | null> 
   popularity: (a, b) => b.booked_count - a.booked_count,
 }
 
-export function applyFilters(products: Product[], { sortKey, inStockOnly, tag }: ProductFilters) {
+export function applyFilters(products: Product[], { sortKey, inStockOnly, tag, category }: ProductFilters) {
   const matching = products.filter(
-    (product) => (!inStockOnly || !product.out_of_stock) && (!tag || product.tag === tag),
+    (product) =>
+      (!inStockOnly || !product.out_of_stock) && (!tag || product.tag === tag) && (!category || getCategory(product) === category),
   )
   const comparator = comparators[sortKey]
   return comparator ? [...matching].sort(comparator) : matching

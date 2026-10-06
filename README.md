@@ -25,7 +25,7 @@ Only the Gaming page is built. The other tabs (Photography, Outdoor, Entertainme
 - Responsive layout for desktop, tablet and mobile, including the mobile header and bottom nav
 - Product grid driven by JSON, with a "Show More" button that loads 12 at a time
 - Reusable product card with tag badges (Trending, New, etc.) and a wishlist heart
-- Sort (price, rating, most booked) and filters (in stock, tag) for the product list
+- Sort (price, rating, most booked) and filters (sidebar category, in stock, tag) for the product list
 - Promo banners between product rows
 - City picker and a date range picker with rental-day calculation; once dates are chosen the card prices are revealed
 - Search drawer that filters products by name, and shows rating and booked count

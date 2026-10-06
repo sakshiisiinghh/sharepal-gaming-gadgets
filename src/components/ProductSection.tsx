@@ -1,29 +1,24 @@
-import { useState } from 'react'
 import { products } from '../data/products'
 import { applyFilters, defaultFilters, type ProductFilters } from '../utils/productFilters'
 import type { DateRange } from './overlays/DateRangeModal'
 import ProductGrid from './ProductGrid'
 import ProductToolbar from './ProductToolbar'
 
-const PAGE_SIZE = 12
 const tags = [...new Set(products.map(({ tag }) => tag).filter(Boolean))]
 
 interface ProductSectionProps {
+  filters: ProductFilters
+  visibleCount: number
   dateRange: DateRange | null
+  onFiltersChange: (filters: ProductFilters) => void
+  onShowMore: () => void
   onSelectDates: () => void
 }
 
-export default function ProductSection({ dateRange, onSelectDates }: ProductSectionProps) {
-  const [filters, setFilters] = useState(defaultFilters)
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+export default function ProductSection({ filters, visibleCount, dateRange, onFiltersChange, onShowMore, onSelectDates }: ProductSectionProps) {
   const matchingProducts = applyFilters(products, filters)
   const visibleProducts = matchingProducts.slice(0, visibleCount)
   const hasMore = visibleCount < matchingProducts.length
-
-  const changeFilters = (nextFilters: ProductFilters) => {
-    setFilters(nextFilters)
-    setVisibleCount(PAGE_SIZE)
-  }
 
   return (
     <section className="pb-10">
@@ -34,7 +29,7 @@ export default function ProductSection({ dateRange, onSelectDates }: ProductSect
           <span className="text-neutral-500">{matchingProducts.length} items</span>
         </p>
       </div>
-      <ProductToolbar filters={filters} tags={tags} onChange={changeFilters} />
+      <ProductToolbar filters={filters} tags={tags} onChange={onFiltersChange} />
       {matchingProducts.length > 0 ? (
         <ProductGrid products={visibleProducts} hasDates={dateRange !== null} onSelectDates={onSelectDates} />
       ) : (
@@ -42,7 +37,7 @@ export default function ProductSection({ dateRange, onSelectDates }: ProductSect
           <p className="text-16 font-semibold text-neutral-500">No products match these filters.</p>
           <button
             type="button"
-            onClick={() => changeFilters(defaultFilters)}
+            onClick={() => onFiltersChange(defaultFilters)}
             className="rounded-full border-2 border-neutral-900 px-5 py-2 text-14 font-semibold hover:bg-neutral-150"
           >
             Clear filters
@@ -56,7 +51,7 @@ export default function ProductSection({ dateRange, onSelectDates }: ProductSect
         {hasMore && (
           <button
             type="button"
-            onClick={() => setVisibleCount(visibleCount + PAGE_SIZE)}
+            onClick={onShowMore}
             className="flex h-9 w-full items-center justify-center rounded-4xl border-2 border-neutral-900 bg-gray-100 p-5 text-16 font-medium hover:bg-neutral-150 sm:max-w-72 md:p-6"
           >
             Show More
