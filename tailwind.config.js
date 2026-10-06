@@ -66,6 +66,18 @@ export default {
         category: { purple: '#8A2BE2', green: '#228B22', orange: '#FF5733', red: '#FF4465' },
         decorative: { blue: '#0079BC', orange: '#E86419', pink: '#E819AE' },
       },
+      fontSize: {
+        10: ['10px', '14px'],
+        12: ['12px', '16px'],
+        14: ['14px', '18px'],
+        16: ['16px', '24px'],
+        18: ['18px', '24px'],
+        20: ['20px', '28px'],
+        24: ['24px', '32px'],
+        40: ['40px', '48px'],
+        48: ['48px', '56px'],
+        60: ['60px', '60px'],
+      },
       borderRadius: { '4xl': '1.75rem' },
       keyframes: {
         marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
