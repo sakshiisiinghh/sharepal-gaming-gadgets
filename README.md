@@ -4,6 +4,8 @@ A frontend recreation of the SharePal gaming gadgets rental page, built as part 
 
 Original page: https://sharepal.in/bangalore/gaming-gadgets-on-rent
 
+Live demo: https://sharepal-gaming-gadgets.vercel.app/
+
 ## Overview
 
 This recreates the Bangalore gaming gadgets page: header, category tabs, hero, product grid, FAQs, customer reviews and the footer. The goal was to match the original layout and behaviour as closely as possible, on desktop and on mobile.
