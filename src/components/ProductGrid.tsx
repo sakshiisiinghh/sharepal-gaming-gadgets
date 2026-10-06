@@ -24,17 +24,18 @@ const PRODUCTS_PER_ROW = 4
 
 interface ProductGridProps {
   products: Product[]
+  hasDates: boolean
   onSelectDates: () => void
 }
 
-export default function ProductGrid({ products, onSelectDates }: ProductGridProps) {
+export default function ProductGrid({ products, hasDates, onSelectDates }: ProductGridProps) {
   return (
     <div className="mt-3 grid grid-cols-2 gap-x-2 gap-y-5 md:mt-6 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
       {products.map((product, index) => {
         const banner = (index + 1) % PRODUCTS_PER_ROW === 0 ? bannersByRow[(index + 1) / PRODUCTS_PER_ROW] : undefined
         return (
           <Fragment key={product.id}>
-            <ProductCard product={product} onSelectDates={onSelectDates} />
+            <ProductCard product={product} hasDates={hasDates} onSelectDates={onSelectDates} />
             {banner && <PromoBanner {...banner} />}
           </Fragment>
         )

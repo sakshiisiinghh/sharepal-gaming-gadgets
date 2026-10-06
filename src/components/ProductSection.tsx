@@ -1,10 +1,16 @@
 import { useState } from 'react'
 import { products } from '../data/products'
+import type { DateRange } from './overlays/DateRangeModal'
 import ProductGrid from './ProductGrid'
 
 const PAGE_SIZE = 12
 
-export default function ProductSection({ onSelectDates }: { onSelectDates: () => void }) {
+interface ProductSectionProps {
+  dateRange: DateRange | null
+  onSelectDates: () => void
+}
+
+export default function ProductSection({ dateRange, onSelectDates }: ProductSectionProps) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const visibleProducts = products.slice(0, visibleCount)
   const hasMore = visibleCount < products.length
@@ -18,7 +24,7 @@ export default function ProductSection({ onSelectDates }: { onSelectDates: () =>
           <span className="text-neutral-500">{products.length} items</span>
         </p>
       </div>
-      <ProductGrid products={visibleProducts} onSelectDates={onSelectDates} />
+      <ProductGrid products={visibleProducts} hasDates={dateRange !== null} onSelectDates={onSelectDates} />
       <div className="mt-5 flex flex-col items-center border-t border-gray-200 py-7 md:mt-10">
         <p className="pb-3 text-14 text-gray-400 md:text-16">
           Showing {visibleProducts.length} of {products.length} results

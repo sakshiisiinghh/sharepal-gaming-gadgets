@@ -4,6 +4,7 @@ import { HeartIcon, PlusIcon } from './icons'
 
 interface ProductCardProps {
   product: Product
+  hasDates: boolean
   onSelectDates: () => void
 }
 
@@ -13,7 +14,7 @@ const tagStyles: Record<string, string> = {
 }
 const defaultTagStyle = 'border-neutral-300 text-neutral-900'
 
-export default function ProductCard({ product, onSelectDates }: ProductCardProps) {
+export default function ProductCard({ product, hasDates, onSelectDates }: ProductCardProps) {
   const [isWishlisted, setWishlisted] = useState(false)
   const { name, image, tag, per_day_rent: perDayRent } = product
 
@@ -45,9 +46,9 @@ export default function ProductCard({ product, onSelectDates }: ProductCardProps
           <hr className="my-1 h-px w-full border-0 bg-neutral-200" />
           <div className="flex items-end justify-between gap-1 max-md:flex-wrap md:gap-2">
             <div className="flex flex-col items-baseline gap-0 md:gap-1">
-              <p className="text-10 font-bold text-gray-600 md:text-14 md:font-semibold">Select Dates to view price</p>
+              <p className="text-10 font-bold text-gray-600 md:text-14 md:font-semibold">{hasDates ? 'Rent per day' : 'Select Dates to view price'}</p>
               <p className="text-14 font-bold text-gray-900 md:text-18">
-                ₹<span className="inline-flex blur-sm">{perDayRent}</span>
+                ₹<span className={hasDates ? '' : 'inline-flex blur-sm'}>{perDayRent}</span>
               </p>
             </div>
             <button

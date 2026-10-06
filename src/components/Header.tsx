@@ -1,6 +1,7 @@
 import logoShare from '../assets/logo-share.svg'
 import logoPal from '../assets/logo-pal.svg'
-import { CITY } from '../data/site'
+import { formatShortDate } from '../utils/dates'
+import type { DateRange } from './overlays/DateRangeModal'
 import {
   CalendarIcon,
   CalendarPlusIcon,
@@ -12,6 +13,8 @@ import {
 } from './icons'
 
 interface HeaderProps {
+  city: string
+  dateRange: DateRange | null
   onSelectCity: () => void
   onSelectDates: () => void
   onOpenSearch: () => void
@@ -30,7 +33,7 @@ function Logo({ className }: { className: string }) {
   )
 }
 
-function DesktopHeader({ onSelectCity, onSelectDates, onOpenSearch, onOpenProfile }: HeaderProps) {
+function DesktopHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenSearch, onOpenProfile }: HeaderProps) {
   return (
     <div className="container hidden items-end justify-between gap-1 lg:flex">
       <div className="flex-1">
@@ -42,18 +45,18 @@ function DesktopHeader({ onSelectCity, onSelectDates, onOpenSearch, onOpenProfil
           className="flex items-center gap-1 rounded-l-full bg-neutral-200 px-[10px] py-[6px] text-14 font-semibold text-primary-900 hover:bg-neutral-250"
         >
           <PinIcon className="w-5" />
-          <span className="min-w-16 text-left">{CITY}</span>
+          <span className="min-w-16 text-left">{city}</span>
           <ChevronDownIcon className="h-4 w-4" />
         </button>
         <button onClick={onSelectDates} className="flex items-center gap-2 text-14 font-semibold text-neutral-700">
           <span className="flex items-center gap-2">
             <CalendarIcon className="h-4 w-4" />
-            Delivery Date
+            {dateRange ? formatShortDate(dateRange.delivery) : 'Delivery Date'}
           </span>
           <span className="h-5 w-[2px] bg-neutral-200" />
           <span className="flex items-center gap-2">
             <CalendarIcon className="h-4 w-4" />
-            Pickup Date
+            {dateRange ? formatShortDate(dateRange.pickup) : 'Pickup Date'}
           </span>
         </button>
         <button
@@ -82,7 +85,7 @@ function DesktopHeader({ onSelectCity, onSelectDates, onOpenSearch, onOpenProfil
   )
 }
 
-function MobileHeader({ onSelectCity, onSelectDates, onOpenProfile }: HeaderProps) {
+function MobileHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenProfile }: HeaderProps) {
   return (
     <div className="container flex flex-col gap-3 lg:hidden">
       <div className="flex items-center justify-between gap-1">
@@ -93,7 +96,7 @@ function MobileHeader({ onSelectCity, onSelectDates, onOpenProfile }: HeaderProp
             className="flex items-center gap-1 rounded-full border border-category-purple bg-category-purple px-2 py-0.5 text-12 font-semibold text-gray-100 shadow-md"
           >
             <PinIcon className="w-4 fill-gray-100" />
-            <span className="min-w-4">{CITY}</span>
+            <span className="min-w-4">{city}</span>
             <ChevronDownIcon className="w-3" />
           </button>
           <button
@@ -108,7 +111,7 @@ function MobileHeader({ onSelectCity, onSelectDates, onOpenProfile }: HeaderProp
       <div className="flex h-[34px] items-center justify-between rounded-full border-2 border-category-purple bg-gray-100">
         <button onClick={onSelectDates} className="flex flex-1 items-center gap-1 px-2 text-12 font-semibold text-neutral-700">
           <CalendarIcon className="mx-1 w-4" />
-          Select Rental Dates
+          {dateRange ? `${formatShortDate(dateRange.delivery)} - ${formatShortDate(dateRange.pickup)}` : 'Select Rental Dates'}
         </button>
         <button
           onClick={onSelectDates}

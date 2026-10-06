@@ -8,17 +8,28 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import ProductSection from '../components/ProductSection'
 import ReviewsSection from '../components/ReviewsSection'
+import CitySelectorModal from '../components/overlays/CitySelectorModal'
+import DateRangeModal, { type DateRange } from '../components/overlays/DateRangeModal'
+import FaqDrawer from '../components/overlays/FaqDrawer'
+import ProfileDrawer from '../components/overlays/ProfileDrawer'
+import SearchDrawer from '../components/overlays/SearchDrawer'
 import SuperCategoryTabs from '../components/SuperCategoryTabs'
+import { CITY } from '../data/site'
 
 type Overlay = 'city' | 'dates' | 'search' | 'profile' | 'faqs' | null
 
 export default function GamingGadgets() {
-  const [, setOverlay] = useState<Overlay>(null)
+  const [overlay, setOverlay] = useState<Overlay>(null)
+  const [city, setCity] = useState(CITY)
+  const [dateRange, setDateRange] = useState<DateRange | null>(null)
   const openDates = () => setOverlay('dates')
+  const closeOverlay = () => setOverlay(null)
 
   return (
     <>
       <Header
+        city={city}
+        dateRange={dateRange}
         onSelectCity={() => setOverlay('city')}
         onSelectDates={openDates}
         onOpenSearch={() => setOverlay('search')}
@@ -30,7 +41,7 @@ export default function GamingGadgets() {
           <CategorySidebar />
           <div className="min-w-0 flex-1">
             <Hero />
-            <ProductSection onSelectDates={openDates} />
+            <ProductSection dateRange={dateRange} onSelectDates={openDates} />
           </div>
         </div>
       </main>
@@ -39,6 +50,29 @@ export default function GamingGadgets() {
       <ReviewsSection />
       <Footer />
       <FloatingActions onSelectDates={openDates} />
+      {overlay === 'city' && (
+        <CitySelectorModal
+          selectedCity={city}
+          onSelect={(selectedCity) => {
+            setCity(selectedCity)
+            closeOverlay()
+          }}
+          onClose={closeOverlay}
+        />
+      )}
+      {overlay === 'dates' && (
+        <DateRangeModal
+          initialRange={dateRange}
+          onConfirm={(range) => {
+            setDateRange(range)
+            closeOverlay()
+          }}
+          onClose={closeOverlay}
+        />
+      )}
+      {overlay === 'search' && <SearchDrawer onClose={closeOverlay} />}
+      {overlay === 'profile' && <ProfileDrawer onClose={closeOverlay} />}
+      {overlay === 'faqs' && <FaqDrawer onClose={closeOverlay} />}
     </>
   )
 }

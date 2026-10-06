@@ -81,3 +81,11 @@ export const TagIcon = (props: IconProps) => (
 export const ChatSelectIcon = (props: IconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" {...props} viewBox="0 0 24 24" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M19 3H18V1H16V3H8V1H6V3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H12.2547C11.8334 20.396 11.5049 19.7224 11.2899 19H5V8H19V10.0709C19.7061 10.1719 20.3783 10.3783 21 10.6736V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3ZM14.4645 13.4645C12.5118 15.4171 12.5118 18.5829 14.4645 20.5355C16.4171 22.4882 19.5829 22.4882 21.5355 20.5355C23.4882 18.5829 23.4882 15.4171 21.5355 13.4645C19.5829 11.5118 16.4171 11.5118 14.4645 13.4645ZM20.75 17L16.25 19.7V14.3L20.75 17Z" fill="currentColor"></path></svg>
 )
+
+export const CloseIcon = (props: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+)
+
+export const ArrowRightIcon = (props: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+)
