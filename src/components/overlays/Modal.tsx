@@ -37,8 +37,9 @@ export function Modal({ title, maxWidth = 'max-w-7xl', onClose, children }: Over
         role="dialog"
         aria-label={title}
         onClick={(event) => event.stopPropagation()}
-        className={`absolute left-1/2 top-1/2 max-h-svh w-[95%] ${maxWidth} -translate-x-1/2 -translate-y-1/2 overflow-auto rounded-[28px] bg-gray-150 shadow-lg`}
+        className={`absolute bottom-0 left-0 max-h-[92svh] w-full overflow-auto rounded-t-3xl bg-gray-150 shadow-lg md:bottom-auto md:left-1/2 md:top-1/2 md:max-h-svh md:w-[95%] md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-[28px] ${maxWidth}`}
       >
+        <div className="mx-auto mt-2 h-1 w-16 rounded-full bg-neutral-200 md:hidden" />
         {children}
       </div>
     </div>

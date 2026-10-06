@@ -59,7 +59,9 @@ export default function Calendar(props: CalendarProps) {
         <ChevronRightIcon className="h-4 w-4" />
       </button>
       <Month month={firstMonth} {...props} />
-      <Month month={addMonths(firstMonth, 1)} {...props} />
+      <div className="hidden flex-1 sm:flex">
+        <Month month={addMonths(firstMonth, 1)} {...props} />
+      </div>
     </div>
   )
 }

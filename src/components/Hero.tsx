@@ -36,7 +36,7 @@ export default function Hero() {
           </span>
           PS5, Xbox, Oculus VR, Racing Wheel on rent.
         </h2>
-        <div className="flex w-full flex-wrap items-center justify-center md:mt-3 md:max-w-lg md:gap-2">
+        <div className="flex w-full flex-wrap items-center md:mt-3 md:justify-center md:max-w-lg md:gap-2">
           {brandLogos.map(({ file, name }, index) => (
             <div key={file} className="flex items-center">
               {index > 0 && <span className="mx-1 h-4 w-[2px] rounded-full bg-category-purple opacity-50 md:mx-2 md:h-6 md:w-[3px] md:opacity-70" />}

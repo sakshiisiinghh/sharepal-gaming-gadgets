@@ -6,6 +6,7 @@ import FloatingActions from '../components/FloatingActions'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import MobileBottomNav from '../components/MobileBottomNav'
 import ProductSection from '../components/ProductSection'
 import ReviewsSection from '../components/ReviewsSection'
 import CitySelectorModal from '../components/overlays/CitySelectorModal'
@@ -36,11 +37,18 @@ export default function GamingGadgets() {
         onOpenProfile={() => setOverlay('profile')}
       />
       <main className="container px-0 py-24 pb-0 md:py-20 md:pb-0">
-        <SuperCategoryTabs />
+        <div className="max-md:bg-[linear-gradient(360deg,#8A2BE2_0%,#4C187C_100%)] max-md:pb-3 md:contents">
+          <SuperCategoryTabs />
+          <div className="px-2 md:hidden">
+            <Hero />
+          </div>
+        </div>
         <div className="flex gap-2 px-2 max-md:pt-4 md:grid md:grid-cols-[100px_1fr] md:gap-8 md:px-0 lg:grid-cols-[120px_1fr]">
           <CategorySidebar />
           <div className="min-w-0 flex-1">
-            <Hero />
+            <div className="hidden md:block">
+              <Hero />
+            </div>
             <ProductSection dateRange={dateRange} onSelectDates={openDates} />
           </div>
         </div>
@@ -50,6 +58,7 @@ export default function GamingGadgets() {
       <ReviewsSection />
       <Footer />
       <FloatingActions onSelectDates={openDates} />
+      <MobileBottomNav onOpenSearch={() => setOverlay('search')} />
       {overlay === 'city' && (
         <CitySelectorModal
           selectedCity={city}

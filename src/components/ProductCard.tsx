@@ -41,7 +41,9 @@ export default function ProductCard({ product, hasDates, onSelectDates }: Produc
         </button>
       </div>
       <div className="flex h-full flex-col justify-between">
-        <h2 className="line-clamp-2 pb-1 pt-2.5 text-12 font-bold md:p-2 md:pb-0 md:text-16">{name}</h2>
+        <div className="pb-1 pt-2.5 md:p-2 md:pb-0">
+          <h2 className="line-clamp-2 text-12 font-bold md:text-16">{name}</h2>
+        </div>
         <div className="flex flex-col gap-0 md:gap-1 md:px-2 md:pb-3">
           <hr className="my-1 h-px w-full border-0 bg-neutral-200" />
           <div className="flex items-end justify-between gap-1 max-md:flex-wrap md:gap-2">

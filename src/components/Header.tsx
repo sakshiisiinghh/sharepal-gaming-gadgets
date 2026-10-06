@@ -89,7 +89,7 @@ function MobileHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenProf
   return (
     <div className="container flex flex-col gap-3 lg:hidden">
       <div className="flex items-center justify-between gap-1">
-        <Logo className="h-10 w-[122px] rounded-b-xl px-3 pb-1 pt-3" />
+        <Logo className="h-10 w-[136px] rounded-b-xl px-3 pb-1 pt-3" />
         <div className="flex items-center justify-end gap-1.5 pt-1.5 md:gap-4">
           <button
             onClick={onSelectCity}
