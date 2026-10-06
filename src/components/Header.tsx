@@ -36,16 +36,14 @@ function Logo({ className }: { className: string }) {
 function DesktopHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenSearch, onOpenProfile }: HeaderProps) {
   return (
     <div className="container hidden items-end justify-between gap-1 lg:flex">
-      <div className="flex-1">
-        <Logo className="h-[68px] w-40 rounded-b-2xl p-3 pt-[18px] shadow-sm" />
-      </div>
+      <Logo className="h-[68px] w-40 rounded-b-2xl p-3 pt-[18px] shadow-sm" />
       <div className="flex items-center gap-2 rounded-full border-2 border-category-purple bg-gray-100">
         <button
           onClick={onSelectCity}
           className="flex items-center gap-1 rounded-l-full bg-neutral-200 px-[10px] py-[6px] text-14 font-semibold text-primary-900 hover:bg-neutral-250"
         >
           <PinIcon className="w-5" />
-          <span className="min-w-16 text-left">{city}</span>
+          <span className="min-w-16 text-left leading-4">{city}</span>
           <ChevronDownIcon className="h-4 w-4" />
         </button>
         <button onClick={onSelectDates} className="flex items-center gap-2 text-14 font-semibold text-neutral-700">
@@ -67,7 +65,7 @@ function DesktopHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenSea
           <span className="pr-1 font-semibold tracking-wide">Select</span>
         </button>
       </div>
-      <div className="flex flex-1 items-end justify-end gap-3 text-gray-100">
+      <div className="flex items-end justify-end gap-3 text-gray-100">
         <button onClick={onOpenSearch} aria-label="Search" className={iconButton}>
           <SearchIcon className="h-7 w-7 fill-current" />
         </button>
@@ -78,7 +76,7 @@ function DesktopHeader({ city, dateRange, onSelectCity, onSelectDates, onOpenSea
           <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-category-purple bg-gray-100 p-0.5 text-neutral-900 hover:bg-gray-200">
             <UserIcon className="h-6 w-6 fill-current" />
           </span>
-          <span className="text-16 font-semibold">Hi, Login</span>
+          <span className="text-16 font-semibold leading-5">Hi, Login</span>
         </button>
       </div>
     </div>

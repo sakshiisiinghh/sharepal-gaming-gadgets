@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { addMonths, formatMonthTitle, getMonthGrid, isSameDay, startOfDay } from '../../utils/dates'
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons'
 
+const TODAY = startOfDay(new Date())
 const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 
 interface CalendarProps {
@@ -11,8 +12,6 @@ interface CalendarProps {
 }
 
 function Month({ month, start, end, onSelectDate }: CalendarProps & { month: Date }) {
-  const today = startOfDay(new Date())
-
   return (
     <div className="flex-1">
       <h4 className="mb-4 text-center text-14 font-medium">{formatMonthTitle(month)}</h4>
@@ -24,7 +23,7 @@ function Month({ month, start, end, onSelectDate }: CalendarProps & { month: Dat
         ))}
         {getMonthGrid(month).map((date) => {
           const isOutsideMonth = date.getMonth() !== month.getMonth()
-          const isPast = date < today
+          const isPast = date < TODAY
           const isEdge = (start && isSameDay(date, start)) || (end && isSameDay(date, end))
           const isInRange = start && end && date > start && date < end
           return (
@@ -47,7 +46,7 @@ function Month({ month, start, end, onSelectDate }: CalendarProps & { month: Dat
 }
 
 export default function Calendar(props: CalendarProps) {
-  const [firstMonth, setFirstMonth] = useState(() => addMonths(new Date(), 0))
+  const [firstMonth, setFirstMonth] = useState(() => addMonths(TODAY, 0))
   const arrow = 'absolute top-0 flex h-6 w-6 items-center justify-center rounded-full border border-neutral-200'
 
   return (

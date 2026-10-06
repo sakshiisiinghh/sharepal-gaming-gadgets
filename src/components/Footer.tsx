@@ -4,6 +4,8 @@ import { categoryLinkGroups, footerLinkGroups, newBadgeLinks, socialLinks } from
 import { ChevronDownIcon, FacebookIcon, HeadsetIcon, InstagramIcon, LinkedinIcon, MailIcon } from './icons'
 import SeoText from './SeoText'
 
+const CURRENT_YEAR = new Date().getFullYear()
+
 function NewBadge() {
   return (
     <span className="ml-1 -translate-y-2 rounded-full bg-secondary-500 px-2.5 py-[0.5px] text-10 font-bold text-secondary-900">New</span>
@@ -16,8 +18,8 @@ function SeoSection() {
   return (
     <div className="flex flex-col gap-2">
       <div
-        className={`text-neutral-300 [&_a]:underline [&_h2]:my-1 [&_h2]:text-18 [&_h2]:font-medium [&_h2]:text-gray-100 [&_h3]:my-2 [&_h3]:text-16 [&_h3]:font-medium [&_li]:mt-1 [&_li]:text-14 [&_li]:font-light [&_p]:mt-1 [&_p]:text-14 [&_p]:font-light [&_strong]:font-bold [&_strong]:text-gray-150 [&_ul]:list-inside [&_ul]:list-disc ${
-          isExpanded ? '' : 'max-h-[230px] overflow-hidden'
+        className={`text-neutral-300 [&_a]:underline [&_h2]:my-1 [&_h2]:text-18 [&_h2]:font-medium [&_h2]:leading-7 [&_h2]:text-gray-100 [&_h3]:my-2 [&_h3]:text-16 [&_h3]:font-medium [&_li]:mt-1 [&_li]:text-14 [&_li]:font-light [&_p]:mt-1 [&_p]:text-14 [&_p]:font-light [&_strong]:font-bold [&_strong]:text-gray-150 [&_ul]:list-inside [&_ul]:list-disc ${
+          isExpanded ? '' : 'max-h-[260px] overflow-hidden'
         }`}
       >
         <SeoText />
@@ -41,7 +43,7 @@ export default function Footer() {
         <div className="grid gap-6 max-md:hidden md:grid-cols-4 md:gap-10 lg:grid-cols-5">
           {categoryLinkGroups.map(({ title, links }) => (
             <div key={title} className="flex flex-col gap-4">
-              <h2 className="line-clamp-2 text-18 font-semibold text-gray-100">{title}</h2>
+              <h2 className="line-clamp-2 text-18 font-semibold leading-7 text-gray-100">{title}</h2>
               {links.map(({ label, href }) => (
                 <a key={label} href={href} className="text-14 font-medium text-neutral-300 hover:text-neutral-200 hover:underline">
                   {label}
@@ -58,10 +60,10 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 md:gap-3 lg:grid-cols-5">
             {footerLinkGroups.map(({ title, links }) => (
               <div key={title}>
-                <h2 className="mb-3 min-w-max text-16 font-bold text-gray-100 md:mb-6">{title}</h2>
+                <h2 className="mb-3 min-w-max text-14 font-bold text-gray-100 md:mb-6">{title}</h2>
                 <div className="flex min-w-max flex-col gap-1 text-12 font-medium text-neutral-300">
                   {links.map(({ label, href }) => (
-                    <a key={label} href={href} className="hover:text-white md:text-14">
+                    <a key={label} href={href} className="py-0 hover:text-white md:py-3 md:text-14">
                       {label}
                       {newBadgeLinks.includes(label) && <NewBadge />}
                     </a>
@@ -70,13 +72,13 @@ export default function Footer() {
               </div>
             ))}
             <div>
-              <h2 className="mb-3 min-w-max text-16 font-bold text-gray-100 md:mb-6">Need Help</h2>
+              <h2 className="mb-3 min-w-max text-14 font-bold text-gray-100 md:mb-6">Need Help</h2>
               <div className="flex min-w-max flex-col gap-2 text-neutral-300">
                 <button type="button" className="flex items-center gap-2 py-1.5 hover:text-white md:py-3">
                   <HeadsetIcon className="h-6 w-6" />
                   <span className="text-12 md:text-14">Contact Support</span>
                 </button>
-                <a href="/support" className="py-1.5 text-12 hover:text-white md:text-14">
+                <a href="/support" className="py-1.5 text-12 hover:text-white md:py-3 md:text-14">
                   Contact Us
                 </a>
                 <a href="mailto:care@sharepal.in" className="flex items-center gap-2 py-1.5 hover:text-white md:py-3">
@@ -99,7 +101,7 @@ export default function Footer() {
             >
               Go up <ChevronDownIcon className="h-6 w-6 rotate-180" />
             </button>
-            <p>© {new Date().getFullYear()}. SWNAC E-Kiraya Services Pvt Ltd</p>
+            <p>© {CURRENT_YEAR}. SWNAC E-Kiraya Services Pvt Ltd</p>
             <p>Made with ♥️ for India</p>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function Hero() {
         <h1 className="font-ubuntu text-20 font-bold capitalize leading-tight tracking-tight drop-shadow-lg md:text-40 md:-tracking-[0.01em]">
           Gaming Consoles
         </h1>
-        <h2 className="w-[75%] text-10 font-bold drop-shadow-md max-md:text-start sm:text-14 md:max-w-[70%] lg:text-18 lg:leading-6">
+        <h2 className="w-[75%] text-10 font-bold drop-shadow-md max-md:text-start sm:text-14 md:max-w-[70%] lg:max-w-[510px] lg:text-18 lg:leading-6">
           Rent the latest gaming gadgets from
           <span className="mx-1 inline-flex w-14 items-center justify-center align-middle md:w-20">
             <img src={logoShare} alt="" className="w-[63%]" />
